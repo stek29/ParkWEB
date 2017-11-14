@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> {{ title }} </title>
+  </head>
+
+  <body>
+    <h1> {{ title }} </h1>
+    <h3>Параметры:</h3>
+    {% for param in params %}
+      {{ param.k }} : {{ param.v }} <br>
+    {% endfor %}
+    </table>
+  </body>
+</html>

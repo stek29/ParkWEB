@@ -1,7 +1,14 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
-def index(request):
-    return render(request, 'index.html', {
-            'title': 'Hey there',
-            'content': 'Quick fox brown dog lazy lala',
+@csrf_exempt
+def showparams(request):
+    def parse(q):
+        return [{ 'k': k, 'v': v } for k, v in q.items()]
+
+    params = parse(request.GET) + parse(request.POST)
+
+    return render(request, 'showparams.html', {
+            'title': 'Привет, мир!',
+            'params': params,
         })
