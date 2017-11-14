@@ -1,2 +1,6 @@
 #!/bin/sh
-exec ./manage.py runserver 0.0.0.0:8080
+if [ "$1" = 'wsgi' ]; then
+  exec gunicorn askmeme.wsgi -b 0:8080
+else
+  exec ./manage.py runserver 0:8080
+fi
